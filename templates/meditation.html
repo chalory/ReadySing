@@ -3,26 +3,30 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.tailwindcss.com"></script>
+        <script defer src="../static/scripts/main.js"></script>
+
         <link rel="stylesheet" href="../static/styles/index.css" />
     </head>
     <body>
         <section class="meditation">
+            <div class="timer">00 : <span class="value">00</span></div>
+
             <div class="breathe">
-                <h1>Breathe</h1>
+                <div class="text">Breathe</div>
+            </div>
+
+            <div class="absolute bottom-[5vh] right-[5vw]">
+                <a href="/vocal-warmup" class="relative z-1">
+                    <div
+                        class="button w-40 h-16 bg-blue-500 cursor-pointer select-none active:translate-y-2 active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841] active:border-b-[0px] transition-all duration-150 [box-shadow:0_10px_0_0_#1b6ff8,0_15px_0_0_#1b70f841] rounded-full border-[1px] border-blue-400"
+                    >
+                        <span
+                            class="flex flex-col justify-center items-center h-full text-white font-bold text-lg"
+                            >Skip</span
+                        >
+                    </div>
+                </a>
             </div>
         </section>
-
-        <div class="absolute bottom-[5vh] right-[5vw]">
-            <a href="/vocal-warmup" class="relative z-1">
-                <div
-                    class="button w-40 h-16 bg-blue-500 cursor-pointer select-none active:translate-y-2 active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841] active:border-b-[0px] transition-all duration-150 [box-shadow:0_10px_0_0_#1b6ff8,0_15px_0_0_#1b70f841] rounded-full border-[1px] border-blue-400"
-                >
-                    <span
-                        class="flex flex-col justify-center items-center h-full text-white font-bold text-lg"
-                        >Skip</span
-                    >
-                </div>
-            </a>
-        </div>
     </body>
 </html>
