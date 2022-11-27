@@ -1,18 +1,18 @@
 const timerContainer = document.querySelector(".meditation .timer");
 const timerContentEl = document.querySelector(".meditation .timer .value");
 if (timerContainer) {
-    let timeleft = 59;
-    let downloadTimer = setInterval(() => {
-        if (timeleft <= 0) {
-            clearInterval(downloadTimer);
-        }
-        timerContentEl.textContent = timeleft;
-        timeleft -= 1;
+	let timeleft = 59;
+	let downloadTimer = setInterval(() => {
+		if (timeleft <= 0) {
+			clearInterval(downloadTimer);
+		}
+		timerContentEl.textContent = timeleft;
+		timeleft -= 1;
 
-        console.log(timeleft);
-    }, 1000);
+		console.log(timeleft);
+	}, 1000);
 
-    // <progress value="0" max="10" id="progressBar"></progress>;
+	// <progress value="0" max="10" id="progressBar"></progress>;
 }
 
 // ! SPEECH TO TEXT
@@ -23,86 +23,108 @@ const pulse = document.querySelector(".pulse-ring");
 // const audioCherryBlossom = document.querySelector("#diary-bg-music");
 
 if (speechContainer) {
-    let speech = false;
+	let speech = false;
 
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+	window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    const recognition = new SpeechRecognition();
-    recognition.interimResults = true;
-    const words = document.querySelector(".words");
-    words.appendChild(p);
+	const recognition = new SpeechRecognition();
+	recognition.interimResults = true;
+	const words = document.querySelector(".words");
+	words.appendChild(p);
 
-    recognition.addEventListener("result", e => {
-        const transcript = Array.from(e.results)
-            .map(result => result[0])
-            .map(result => result.transcript)
-            .join("");
+	recognition.addEventListener("result", (e) => {
+		const transcript = Array.from(e.results)
+			.map((result) => result[0])
+			.map((result) => result.transcript)
+			.join("");
 
-        document.getElementById("p").innerHTML = transcript;
-    });
+		document.getElementById("p").innerHTML = transcript;
+	});
 
-    recognition.addEventListener("end", recognition.start);
+	recognition.addEventListener("end", recognition.start);
 
-    micBtn.addEventListener("click", e => {
-        pulse.classList.toggle("show");
+	micBtn.addEventListener("click", (e) => {
+		pulse.classList.toggle("show");
 
-        speech = !speech;
-        console.log(speech);
+		speech = !speech;
+		console.log(speech);
 
-        if (speech) {
-            document.getElementById("p").innerHTML = "";
-            document.getElementById("p").style.display = "block";
-            recognition.start();
-        } else {
-            document.getElementById("p").style.display = "none";
-            recognition.abort();
-            recognition.stop();
-        }
-    });
+		if (speech) {
+			document.getElementById("p").innerHTML = "";
+			document.getElementById("p").style.display = "block";
+			recognition.start();
+		} else {
+			document.getElementById("p").style.display = "none";
+			recognition.abort();
+			recognition.stop();
+		}
+	});
 }
 
+const submitBtn = document.querySelector("#submitBtn");
 const dropZone = document.querySelector("#dropZone");
 const animalsContainer = document.querySelector("#animals");
 const animals = document.querySelectorAll(".animal-img");
 const dropBoxes = document.querySelectorAll(".drop-box");
+const draggableItemsList = document.getElementById("draggableItemsList");
+const thoughtInput = document.getElementById("thought-input");
+
+submitBtn.addEventListener("click", appendList);
+
+function appendList() {
+	let liElement = document.createElement("li");
+
+	let pElement = document.createElement("p");
+	pElement.textContent = thoughtInput.value;
+	pElement.draggable = "true";
+	pElement.id = thoughtInput.value;
+	pElement.addEventListener("dragstart", (e) => {
+		console.log(e.target);
+		drag(e);
+	});
+
+	liElement.appendChild(pElement);
+	draggableItemsList.appendChild(liElement);
+}
 
 if (dropZone) {
-    function allowDrop(event) {
-        event.preventDefault();
-    }
+	function allowDrop(event) {
+		event.preventDefault();
+	}
 
-    function drag(event) {
-        event.dataTransfer.setData("text", event.target.id);
-    }
+	function drag(event) {
+		console.log(event.target.id);
+		event.dataTransfer.setData("text", event.target.id);
+	}
 
-    function drop(event) {
-        event.preventDefault();
-        const data = event.dataTransfer.getData("text");
-        event.target.appendChild(document.getElementById(data));
-    }
+	function drop(event) {
+		event.preventDefault();
+		const data = event.dataTransfer.getData("text");
+		event.target.appendChild(document.getElementById(data));
+	}
 
-    // dropBoxes.forEach(box => {
-    //     box.addEventListener("ondrop", e => {
-    //         drop(e);
-    //         console.log(e);
-    //     });
+	// dropBoxes.forEach(box => {
+	//     box.addEventListener("ondrop", e => {
+	//         drop(e);
+	//         console.log(e);
+	//     });
 
-    //     box.addEventListener("ondragover", e => {
-    //         allowDrop(e);
-    //     });
-    // });
+	//     box.addEventListener("ondragover", e => {
+	//         allowDrop(e);
+	//     });
+	// });
 
-    // animalsContainer.addEventListener("ondrop", e => {
-    //     drop(e);
-    // });
+	// animalsContainer.addEventListener("ondrop", e => {
+	//     drop(e);
+	// });
 
-    // animalsContainer.addEventListener("ondragover", e => {
-    //     allowDrop(e);
-    // });
+	// animalsContainer.addEventListener("ondragover", e => {
+	//     allowDrop(e);
+	// });
 
-    // animals.forEach(box => {
-    //     box.addEventListener("ondragstart", e => {
-    //         drag(e);
-    //     });
-    // });
+	// animals.forEach(box => {
+	//     box.addEventListener("ondragstart", e => {
+	//         drag(e);
+	//     });
+	// });
 }
