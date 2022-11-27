@@ -30,5 +30,10 @@ def warmup2():
     return render_template("warmup2.html")
 
 
+@app.route("/drag_and_drop", methods=["GET", "POST"])
+def drag_and_drop():
+    return render_template("drag_and_drop.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)

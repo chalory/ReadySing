@@ -61,5 +61,48 @@ if (speechContainer) {
     });
 }
 
+const dropZone = document.querySelector("#dropZone");
+const animalsContainer = document.querySelector("#animals");
+const animals = document.querySelectorAll(".animal-img");
+const dropBoxes = document.querySelectorAll(".drop-box");
 
+if (dropZone) {
+    function allowDrop(event) {
+        event.preventDefault();
+    }
 
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+    }
+
+    // dropBoxes.forEach(box => {
+    //     box.addEventListener("ondrop", e => {
+    //         drop(e);
+    //         console.log(e);
+    //     });
+
+    //     box.addEventListener("ondragover", e => {
+    //         allowDrop(e);
+    //     });
+    // });
+
+    // animalsContainer.addEventListener("ondrop", e => {
+    //     drop(e);
+    // });
+
+    // animalsContainer.addEventListener("ondragover", e => {
+    //     allowDrop(e);
+    // });
+
+    // animals.forEach(box => {
+    //     box.addEventListener("ondragstart", e => {
+    //         drag(e);
+    //     });
+    // });
+}
