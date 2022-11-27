@@ -30,13 +30,16 @@ body {
 #dropBox3,
 #dropBox4 {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
     height: 250px;
     width: 250px;
     border: 1px solid #aaaaaa;
     padding: 1rem;
+    margin-right: 300px;
+    margin-left: 300px;
+    margin-top: 80px;
 }
 
 img {
