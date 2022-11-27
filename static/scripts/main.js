@@ -41,7 +41,7 @@ if (speechContainer) {
         document.getElementById("p").innerHTML = transcript;
     });
 
-    recognition.addEventListener("end", recognition.stop);
+    recognition.addEventListener("end", recognition.start);
 
     micBtn.addEventListener("click", e => {
         pulse.classList.toggle("show");
@@ -50,8 +50,11 @@ if (speechContainer) {
         console.log(speech);
 
         if (speech) {
+            document.getElementById("p").innerHTML = "";
+            document.getElementById("p").style.display = "block";
             recognition.start();
         } else {
+            document.getElementById("p").style.display = "none";
             recognition.abort();
             recognition.stop();
         }

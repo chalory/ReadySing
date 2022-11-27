@@ -20,10 +20,14 @@ def diary():
     return render_template("diary.html")
 
 
+@app.route("/warmup1", methods=["GET", "POST"])
+def warmup1():
+    return render_template("warmup1.html")
 
-@app.route("/warmup", methods=["GET", "POST"])
-def warmup():
-    return render_template("warmup.html")
+
+@app.route("/warmup2", methods=["GET", "POST"])
+def warmup2():
+    return render_template("warmup2.html")
 
 
 if __name__ == "__main__":
