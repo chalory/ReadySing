@@ -57,3 +57,7 @@ if (speechContainer) {
         }
     });
 }
+
+const warmupVid1 = document.querySelector("#warmup-vid");
+if (warmupVid1) {
+}
