@@ -10,5 +10,15 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/meditation", methods=["GET", "POST"])
+def meditation():
+    return render_template("meditation.html")
+
+
+@app.route("/diary", methods=["GET", "POST"])
+def diary():
+    return render_template("diary.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
