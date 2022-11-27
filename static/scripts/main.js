@@ -76,8 +76,10 @@ if (dropZone) {
     }
 
     function drop(event) {
+        console.log(event);
         event.preventDefault();
         const data = event.dataTransfer.getData("text");
+        console.log(data);
         event.target.appendChild(document.getElementById(data));
     }
 
@@ -105,4 +107,33 @@ if (dropZone) {
     //         drag(e);
     //     });
     // });
+}
+
+const wordsList = document.querySelector(".words-container .words");
+const wordsForm = document.querySelector(".words-form");
+const inputWordEl = document.querySelector(".input-word");
+if (wordsForm) {
+    wordsForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const inputWord = inputWordEl.value.trim();
+        const placeholder = document.createElement("li");
+        placeholder.textContent = inputWord;
+        placeholder.style.fontStyle = "capitalize";
+        placeholder.draggable = "true";
+        placeholder.id = inputWord;
+
+        placeholder.addEventListener("ondragstart", function (event) {
+            drop(event);
+        });
+
+        // placeholder.addEventListener("ondragover", function (event) {
+        //     allowDrop(placeholder);
+        //     console.log(12321321);
+        // });
+
+        wordsList.appendChild(placeholder);
+
+        inputWord.innerHTML = "";
+    });
 }

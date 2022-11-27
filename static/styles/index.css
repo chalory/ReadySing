@@ -47,3 +47,43 @@ img {
     object-fit: cover;
     width: 200px;
 }
+
+.drag-and-drop {
+    padding-bottom: 5rem;
+}
+
+.words-form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+.words-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+.words-form button {
+    background: #3b82f6;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 0.7rem 1.5rem;
+}
+
+.words {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+}
+
+.words li {
+    background: #ccc;
+    border: 1px solid #aaa;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
