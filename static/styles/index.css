@@ -7,3 +7,12 @@ body {
     margin: 0;
     font-family: "Poppins", sans-serif;
 }
+
+.timer {
+    color:#EFD0CA;
+    font-size:20px;
+    text-align:center;
+    z-index: 1000;
+    margin-bottom: 100px;
+    font-weight: bold; 
+}

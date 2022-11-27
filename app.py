@@ -20,5 +20,11 @@ def diary():
     return render_template("diary.html")
 
 
+
+@app.route("/warmup", methods=["GET", "POST"])
+def warmup():
+    return render_template("warmup.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
