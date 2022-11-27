@@ -61,10 +61,33 @@ if (speechContainer) {
     });
 }
 
+const wordsForm = document.querySelector(".words-form");
+const submitBtn = document.querySelector("#submitBtn");
 const dropZone = document.querySelector("#dropZone");
 const animalsContainer = document.querySelector("#animals");
 const animals = document.querySelectorAll(".animal-img");
 const dropBoxes = document.querySelectorAll(".drop-box");
+const draggableItemsList = document.getElementById("draggableItemsList");
+const thoughtInput = document.getElementById("thought-input");
+
+submitBtn.addEventListener("click", appendList);
+
+function appendList(e) {
+    e.preventDefault();
+    let liElement = document.createElement("li");
+    let pElement = document.createElement("p");
+    pElement.textContent = thoughtInput.value;
+    pElement.draggable = "true";
+    pElement.id = thoughtInput.value;
+    pElement.addEventListener("dragstart", e => {
+        console.log(e.target);
+        drag(e);
+    });
+
+    liElement.appendChild(pElement);
+    draggableItemsList.appendChild(liElement);
+    thoughtInput.value = "";
+}
 
 if (dropZone) {
     function allowDrop(event) {
@@ -72,68 +95,43 @@ if (dropZone) {
     }
 
     function drag(event) {
+        console.log(event.target.id);
         event.dataTransfer.setData("text", event.target.id);
     }
 
     function drop(event) {
-        console.log(event);
         event.preventDefault();
         const data = event.dataTransfer.getData("text");
-        console.log(data);
         event.target.appendChild(document.getElementById(data));
     }
-
-    // dropBoxes.forEach(box => {
-    //     box.addEventListener("ondrop", e => {
-    //         drop(e);
-    //         console.log(e);
-    //     });
-
-    //     box.addEventListener("ondragover", e => {
-    //         allowDrop(e);
-    //     });
-    // });
-
-    // animalsContainer.addEventListener("ondrop", e => {
-    //     drop(e);
-    // });
-
-    // animalsContainer.addEventListener("ondragover", e => {
-    //     allowDrop(e);
-    // });
-
-    // animals.forEach(box => {
-    //     box.addEventListener("ondragstart", e => {
-    //         drag(e);
-    //     });
-    // });
 }
 
-const wordsList = document.querySelector(".words-container .words");
-const wordsForm = document.querySelector(".words-form");
-const inputWordEl = document.querySelector(".input-word");
-if (wordsForm) {
-    wordsForm.addEventListener("submit", e => {
-        e.preventDefault();
+// const wordsList = document.querySelector(".words-container .words");
+// const wordsForm = document.querySelector(".words-form");
+// const inputWordEl = document.querySelector(".input-word");
+// if (wordsForm) {
+//     wordsForm.addEventListener("submit", e => {
+//         e.preventDefault();
 
-        const inputWord = inputWordEl.value.trim();
-        const placeholder = document.createElement("li");
-        placeholder.textContent = inputWord;
-        placeholder.style.fontStyle = "capitalize";
-        placeholder.draggable = "true";
-        placeholder.id = inputWord;
+//         const inputWord = inputWordEl.value.trim();
+//         const placeholder = document.createElement("li");
+//         placeholder.textContent = inputWord;
+//         placeholder.style.fontStyle = "capitalized";
+//         placeholder.draggable = "true";
+//         placeholder.id = inputWord;
 
-        placeholder.addEventListener("ondragstart", function (event) {
-            drop(event);
-        });
+//         placeholder.addEventListener("dragstart", function (event) {
+//             drop(event);
+//         });
 
-        // placeholder.addEventListener("ondragover", function (event) {
-        //     allowDrop(placeholder);
-        //     console.log(12321321);
-        // });
+//         // placeholder.addEventListener("ondragover", function (event) {
+//         //     allowDrop(placeholder);
+//         //     console.log(12321321);
+//         // });
 
-        wordsList.appendChild(placeholder);
+//         inputWord.innerHTML = "";
 
-        inputWord.innerHTML = "";
-    });
-}
+//         wordsList.appendChild(placeholder);
+//         draggableItemsList.appendChild(placeholder);
+//     });
+// }

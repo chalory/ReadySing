@@ -16,13 +16,31 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#dropZone,
 #animals {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    min-height: 200px;
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#dropZone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 5rem;
+}
+
+#dropZone .heading {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+    position: absolute;
+    top: 10px;
 }
 
 #dropBox1,
@@ -37,9 +55,6 @@ body {
     width: 250px;
     border: 1px solid #aaaaaa;
     padding: 1rem;
-    margin-right: 300px;
-    margin-left: 300px;
-    margin-top: 80px;
 }
 
 img {
@@ -71,19 +86,17 @@ img {
     padding: 0.7rem 1.5rem;
 }
 
-.words {
+#draggableItemsList {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
     font-size: 1.25rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.words li {
-    background: #ccc;
-    border: 1px solid #aaa;
+#draggableItemsList li {
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
